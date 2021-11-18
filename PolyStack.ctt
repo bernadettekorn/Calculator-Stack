@@ -1,0 +1,70 @@
+// Author: Bernadette Kornberger
+// Date:   2/2021
+// Purpose: PolyStack class functions
+
+
+#include "PolyStack.hpp"
+#include <iostream>
+
+using namespace std;
+
+
+/*****************************************************************************/
+//returns true if list is empty or false if not
+template <class x>
+bool PolyStack<x>::isEmpty() const
+{
+	return list<x>::empty();
+}
+/*****************************************************************************/
+//removes top value
+template <class x>
+void PolyStack<x>::pop()
+{
+	if (!isEmpty())
+		list<x>::pop_front();
+	else
+		cout << "Stack is already empty no values to pop"
+		     << endl;
+}
+/*****************************************************************************/
+//clears the whole stack
+template <class x>
+void PolyStack<x>::clear()
+{
+	while (!isEmpty())
+	{
+		list<x>::pop_front();
+	}
+}
+/*****************************************************************************/
+//pushes a polynomial to the front of the stack
+template <class x>
+void PolyStack<x>::push()
+{
+	Polynomial input; //Will be used to store user input before stored in list
+	cout << "Enter polynomial to push" << endl
+		<< "note it must end with a ;" << endl;
+	cin >> input;
+
+	//pushes input to the top of stack
+	list<x>::push_front(input);
+	
+}
+/*****************************************************************************/
+//pushes a polynomial to the front of the stack
+template <class x>
+void PolyStack<x>::push(const x& val)
+{
+	//pushes val to the top of stack
+	list<x>::push_front(val);
+	
+}
+/*****************************************************************************/
+//returns the value at the top of the stack
+template <class x>
+const x& PolyStack<x>::top() const
+{
+	return list<x>::front();
+}
+/*****************************************************************************/
